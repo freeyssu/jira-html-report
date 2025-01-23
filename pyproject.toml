@@ -1,10 +1,9 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools", "wheel", "setuptools-scm"]]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "jira-report"
-version = "0.1.0"
 description = "Generating Jira report to see issue trends."
 authors = [{name = "freeyssu", email = "freeyssu@gmail.com"}]
 license = {text = "Free"}
@@ -15,12 +14,17 @@ dependencies = [
     "jinja2"
 ]
 readme = "README.md"
+keywords = ["atlassian", "jira", "report"]
+dynamic = ["version"]
 
 [project.urls]
 Homepage = "https://github.com/freeyssu/jira-report"
 
-[tool.setuptools]
-package-dir = {"" = "jira-report"}
-
 [tool.setuptools.packages.find]
-where = ["jira-report"]
+where = ["."]
+include = ["jira_report"]
+
+[tool.setuptools_scm]
+
+[tool.setuptools.package-data]
+"*" = ["*.j2"]
