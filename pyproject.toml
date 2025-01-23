@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jira-report"
+version = "0.1.0"
+description = "Generating Jira report to see issue trends."
+authors = [{name = "freeyssu", email = "freeyssu@gmail.com"}]
+license = {text = "Free"}
+dependencies = [
+    "jira",
+    "plotly",
+    "pandas",
+    "jinja2"
+]
+readme = "README.md"
+
+[project.urls]
+Homepage = "https://github.com/freeyssu/jira-report"
+
+[tool.setuptools]
+package-dir = {"" = "jira-report"}
+
+[tool.setuptools.packages.find]
+where = ["jira-report"]
