@@ -6,12 +6,11 @@ build-backend = "setuptools.build_meta"
 name = "jira-report"
 description = "Generating Jira report to see issue trends."
 authors = [{name = "freeyssu", email = "freeyssu@gmail.com"}]
-license = "MIT"
+license = {text = "MIT"}
 requires-python = ">=3.8"
-dependencies = {file = ["requirements.txt"]}
 readme = "README.md"
 keywords = ["atlassian", "jira", "report"]
-dynamic = ["version"]
+dynamic = ["version", "dependencies"]
 
 [project.urls]
 Homepage = "https://github.com/freeyssu/jira-report"
@@ -24,3 +23,6 @@ include = ["jira_report"]
 
 [tool.setuptools.package-data]
 "*" = ["*.j2"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
