@@ -9,9 +9,10 @@
 - Customizable report formats
 - Easy to use and configure
 
-<img src="https://github.com/freeyssu/jira-html-report/raw/main/chart.png" alt="Charts" width="1000" />
+## Sample charts and table
+<img src="https://github.com/freeyssu/jira-html-report/raw/main/chart.png" alt="Charts" width="1000" style="border: 1px solid black;"/>
 <br>
-<img src="https://github.com/freeyssu/jira-html-report/raw/main/table.png" alt="Table"/>
+<img src="https://github.com/freeyssu/jira-html-report/raw/main/table.png" alt="Table" style="border: 1px solid black;"/>
 
 ## Requirements
 
