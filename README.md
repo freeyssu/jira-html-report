@@ -9,6 +9,10 @@
 - Customizable report formats
 - Easy to use and configure
 
+<img src="chart.png" alt="Charts" width="1000" />
+<br>
+<img src="table.png" alt="Table"/>
+
 ## Requirements
 
 - Python 3.x
