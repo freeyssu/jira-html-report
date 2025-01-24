@@ -1,6 +1,6 @@
-# Jira Report
+# Jira HTML Report
 
-`jira_report.py` is a Python script designed to generate reports from Jira. This script allows you to fetch and process data from your Jira projects, providing insights and summaries that can help you manage your projects more effectively.
+`jira-html-report` is a Python script designed to generate reports from Jira. This script allows you to fetch and process data from your Jira projects, providing insights and summaries that can help you manage your projects more effectively.
 
 ## Features
 - HTML report with charts and table sheet
@@ -24,21 +24,39 @@ jinja2
 
 - Clone the repository:
     ```sh
-    git clone https://github.com/freeyssu/jira-report.git
-    cd jira-report
+    git clone https://github.com/freeyssu/jira-html-report.git
+    cd jira-html-report
     pip install -r requirements.txt
     ```
 
 - Pypi package management:
     ```sh
-    pip install jira-report
+    pip install jira-html-report
     ```
+
+
+## Directory and files
+```
+.
+├── jira_html_report/
+│   ├── html_templates/
+│   │   ├── chart_templates.j2
+│   │   ├── report_templates.j2
+│   │   └── table_templates.j2
+│   ├── data.py
+│   └── report.py
+└── samples/
+    ├── sample.html
+    ├── sample.ipynb
+    └── sa,ple.py
+```
+
 
 ## Usage
 
 1. Initialize HTMLReport instance
 ```python
-from jira_report import HTMLReport
+from jira_html_report import HTMLReport
 html_report = HTMLReport(server='https://YOUR_JIRA_SERVER', username=USERNAME password=PASSWORD)
 ```
 
