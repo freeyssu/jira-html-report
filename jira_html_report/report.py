@@ -108,3 +108,4 @@ class HTMLReport(JiraDataHandler):
         with open(report_template_path, 'r') as f:
             report_template = Template(f.read())
         return report_template.render(html_charts=html_charts, html_tables=html_tables, **kwargs)
+

@@ -37,7 +37,7 @@ class JiraDataHandler():
         if server:
             self.jira_api = jira.JIRA(server=server, basic_auth=(username, password), **kwargs)
 
-    def generate_dataframes_by_jql(self, jql: str, fields: List[str],
+    def generate_dataframes_by_jql(self, jql: str, fields: List[str], include_key: bool = True,
                                    jql_search_limit: int = 100, **kwargs) -> Tuple[DataFrame, Dict[str, DataFrame]]:
         """Query Jira by the provided jql then generate pandas.DataFrame dataset
 
@@ -56,8 +56,10 @@ class JiraDataHandler():
         def extract_value(field: Dict[str, Any]):
             if field is None:
                 'N/A'
-            elif type(field) in [str, int, float]:
+            elif type(field) in [int, float]:
                 return field
+            elif type(field) is str:
+                return field if field else 'N/A'
             elif type(field) is dict and field.get('value'):    # jira.resources.CustomFieldOption
                 return field['value']
             elif type(field) is dict and field.get('name'):     # common jira.resources
@@ -71,9 +73,12 @@ class JiraDataHandler():
         df = []
         for issue in self.jira_api.search_issues(jql_str=jql, fields=fields, json_result=True,
                                                  maxResults=jql_search_limit, **kwargs)['issues']:
-            df.append({
+            tmp_df = {
                 all_jira_fields[k]['name']: extract_value(v) for k, v in issue['fields'].items()
-            })
+            }
+            if include_key:
+                tmp_df['key'] = issue['key']
+            df.append(tmp_df)
         df = DataFrame(df)
 
         groupby_dfs = {}
@@ -95,3 +100,4 @@ class JiraDataHandler():
         """
 
         return df.groupby(groupby).size().reset_index(name=count_column_name)
+
