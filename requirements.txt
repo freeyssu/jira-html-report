@@ -1,0 +1,4 @@
+jira
+pandas
+plotly
+jinja2

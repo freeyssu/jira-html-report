@@ -1,18 +1,14 @@
 [build-system]
-requires = ["setuptools", "wheel", "setuptools-scm"]]
+requires = ["setuptools", "wheel", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "jira-report"
 description = "Generating Jira report to see issue trends."
 authors = [{name = "freeyssu", email = "freeyssu@gmail.com"}]
-license = {text = "Free"}
-dependencies = [
-    "jira",
-    "plotly",
-    "pandas",
-    "jinja2"
-]
+license = "MIT"
+requires-python = ">=3.8"
+dependencies = {file = ["requirements.txt"]}
 readme = "README.md"
 keywords = ["atlassian", "jira", "report"]
 dynamic = ["version"]
