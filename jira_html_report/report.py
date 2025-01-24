@@ -12,7 +12,7 @@ from plotly.graph_objs import Figure
 from jinja2 import Template
 
 # package libs
-from jira_report.data import JiraDataHandler
+from jira_html_report.data import JiraDataHandler
 
 
 class HTMLReport(JiraDataHandler):
