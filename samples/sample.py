@@ -1,5 +1,5 @@
 import pandas as pd
-from jira_report import HTMLReport
+from jira_html_report import HTMLReport
 
 jira_report = HTMLReport()
 
