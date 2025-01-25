@@ -53,7 +53,7 @@ class HTMLReport(JiraDataHandler):
         func = getattr(px, chart_type)
         return func(data_frame=df, title=chart_title, color=df.columns[0], **kwargs)
 
-    def generate_html_chart(self, figure: Figure, html_template_path: str, div_class_name: str = 'chart',
+    def generate_html_chart(self, figure: Figure, chart_template_path: str, div_class_name: str = 'chart',
                             static_chart: bool = False) -> str:
         """Generate HTML page with the provided Figure object
 
@@ -66,7 +66,7 @@ class HTMLReport(JiraDataHandler):
             str: Rendered HTML codes
         """
 
-        with open(html_template_path, 'r') as f:
+        with open(chart_template_path, 'r') as f:
             chart_template = Template(f.read())
         if static_chart:
             figure_buf = BytesIO()
@@ -108,4 +108,3 @@ class HTMLReport(JiraDataHandler):
         with open(report_template_path, 'r') as f:
             report_template = Template(f.read())
         return report_template.render(html_charts=html_charts, html_tables=html_tables, **kwargs)
-

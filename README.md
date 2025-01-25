@@ -120,21 +120,28 @@ for field_name, sub_df in sub_dfs.items():
 # generate HTML code block for charts
 html_charts = {}
 for field_name, figure in figures.items():
-    html_charts[field_name] = html_report.generate_html_chart(figure=figure, static_chart=True)
+    html_charts[field_name] = html_report.generate_html_chart(
+        figure=figure, chart_template_path='chart_template.j2', static_chart=True)
 
 # generate HTML code block for table
-html_table = html_report.generate_html_table(df=table_df)
+html_table = html_report.generate_html_table(
+    df=table_df, table_template_path='table_template.j2')
 ```
 
 5. Generate HTML report
 ```python
-html_report = html_report.generate_html_report(html_charts=html_charts, html_table=html_table)
+# generate a combined report with charts and table
+html_report = html_report.generate_html_report(
+    report_template_path='report_template.j2', html_charts=html_charts, html_table=html_table)
+
+# save the generated HTML
 with open('jira_report.html', 'wb') as f:
     f.write(html_report.encode())
 ```
 
 ## HTML template modification
-There are three Jinja2 templates under `html_templates` dir to generate a HTML report. You can modify or add any HTML properties/Python vars.
+There are three Jinja2 templates under `html_templates` dir to generate a HTML report.<br>
+You can modify or add any HTML properties/Python vars.
 
 1. Add/update vars or properties in Jinja2 template
 ```html
@@ -144,5 +151,9 @@ There are three Jinja2 templates under `html_templates` dir to generate a HTML r
 
 2. Populate the vars
 ```python
-html_report = html_report.generate_html_report(html_charts=html_charts, html_table=html_table, new_h2_string_in_report="ADDED NEW H2 STRING")
+html_report = html_report.generate_html_report(
+    report_template_path='report_template.j2',
+    html_charts=html_charts,
+    html_table=html_table,
+    new_h2_string_in_report="ADDED NEW H2 STRING")
 ```
