@@ -1,0 +1,8 @@
+<div class="{{ div_class_name }}">
+    {% if base64_img %}
+        <img src="data:image/jpeg;base64,{{ base64_img }}">
+    {% endif %}
+    {% if figure %}
+        {{ figure.to_html(full_html=False, include_plotlyjs='cdn') }}
+    {% endif %}
+</div>

@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>{{ head_title | default('Jira Report')}}</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            h1, h2 {
+                text-align: center;
+            }
+            table {
+                border-collapse: collapse;
+                width: 90%;
+                margin: 20px auto;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+                font-size: 14px;
+            }
+            th {
+                background-color: #f2f2f2;
+            }
+
+            /* CSS for custom div classes */
+            .charts {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+            .tables {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+        <!-- these are for jQuery charts and table -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+        <!-- ------------------------------------- -->
+    </head>
+    <body>
+        {% if body_title %}
+            <h1> {{ body_title }}</h1>
+        {% endif %}
+
+        {% if html_charts %}
+            <div class="charts">
+                {% for html_chart in html_charts.values() %}
+                    {{ html_chart }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if html_table %}
+            <div class="tables">
+                {{ html_table }}
+            </div>
+        {% endif %}
+    </body>
+</html>

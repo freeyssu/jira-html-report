@@ -1,0 +1,20 @@
+<div class="{{ div_class_name }}">
+    <table>
+        <thead>
+            <tr>
+                {% for col in df.columns %}
+                <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in df.iterrows() %}
+            <tr>
+                {% for col in df.columns %}
+                <td>{{ row[1][col] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

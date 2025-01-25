@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools", "wheel", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jira-html-report"
+description = "Generating Jira report to see issue trends."
+authors = [{name = "freeyssu", email = "freeyssu@gmail.com"}]
+license = {text = "MIT"}
+requires-python = ">=3.8"
+readme = "README.md"
+keywords = ["atlassian", "jira", "report"]
+dynamic = ["version", "dependencies"]
+
+[project.urls]
+Homepage = "https://github.com/freeyssu/jira_html_report"
+Repository = "https://github.com/freeyssu/jira_html_report"
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["jira_html_report"]
+
+[tool.setuptools_scm]
+
+[tool.setuptools.package-data]
+"*" = ["*.j2"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
